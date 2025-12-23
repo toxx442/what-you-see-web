@@ -47,3 +47,38 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, #fb923c, #c084fc);
 }
+
+/* Eye logo blink animation */
+.eye-logo {
+  display: block;
+  transform-origin: 50% 50%;
+  /* Faster cycle, eased open and quick snap shut */
+  animation: eye-blink-fast 4.5s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+  filter: drop-shadow(0 0 30px rgba(248, 113, 22, 0.45));
+}
+
+@keyframes eye-blink-fast {
+  /* Resting open */
+  0%,
+  32%,
+  100% {
+    transform: scaleY(1);
+  }
+  /* Ease into closing */
+  35% {
+    transform: scaleY(0.5);
+  }
+  /* Snap shut */
+  37% {
+    transform: scaleY(0.08);
+  }
+  /* Quick rebound */
+  39% {
+    transform: scaleY(0.5);
+  }
+  /* Smooth reopen */
+  42% {
+    transform: scaleY(1);
+  }
+}
+

@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { EyeLogo } from "@/components/eye-logo";
 
 const navItems = [
   { href: "/", label: "Home" },
@@ -20,15 +21,14 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-slate-800/60 bg-slate-950/80 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:h-20 sm:px-6 lg:px-8">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative h-10 w-10 rounded-full bg-gradient-to-tr from-orange-500 to-fuchsia-500 shadow-lg shadow-orange-500/30 group-hover:shadow-orange-500/50 transition-shadow duration-300">
-            <div className="absolute inset-1 rounded-full bg-slate-950" />
-            <div className="absolute inset-2 rounded-full bg-gradient-to-tr from-orange-500 to-fuchsia-500" />
+        {/* Logo only, responsive scale and slight inset from edge */}
+        <Link
+          href="/"
+          className="flex items-center justify-center group pl-3 sm:pl-4"
+        >
+          <div className="relative flex items-center justify-center scale-[2.5] sm:scale-[3] lg:scale-[3.5]">
+            <EyeLogo className="h-5 w-auto transition-transform duration-300 group-hover:scale-105" />
           </div>
-          <span className="text-sm font-bold tracking-[0.2em] uppercase text-white">
-            What You See
-          </span>
         </Link>
 
         {/* Desktop Nav */}
