@@ -281,10 +281,10 @@ export function VideoHero({ videoId, variant = "overlay" }: VideoHeroProps) {
                 transition={{ duration: 0.8, delay: 0.9 }}
               >
                 <Link href="/contact">
-                  <Button size="lg" className="transform transition-transform hover:scale-105">Book an Experience</Button>
+                  <Button className="transform transition-transform hover:scale-105">Book an Experience</Button>
                 </Link>
                 <Link href="/work">
-                  <Button variant="ghost" size="lg" className="transform transition-transform hover:scale-105">View Tours & Events</Button>
+                  <Button variant="ghost" className="transform transition-transform hover:scale-105">View Tours & Events</Button>
                 </Link>
               </motion.div>
             </motion.div>
