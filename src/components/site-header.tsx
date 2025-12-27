@@ -9,8 +9,7 @@ import { EyeLogo } from "@/components/eye-logo";
 
 const navItems = [
   { href: "/", label: "Home" },
-  { href: "/work", label: "Work" },
-  { href: "/gallery", label: "Gallery" },
+  { href: "/work", label: "Our Work" },
   { href: "/contact", label: "Contact" },
 ];
 

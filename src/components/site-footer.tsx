@@ -32,10 +32,7 @@ export function SiteFooter() {
               </h4>
               <nav className="flex flex-col gap-2">
                 <Link href="/work" className="text-sm text-slate-400 hover:text-white transition-colors">
-                  Work
-                </Link>
-                <Link href="/gallery" className="text-sm text-slate-400 hover:text-white transition-colors">
-                  Gallery
+                  Our Work
                 </Link>
                 <Link href="/contact" className="text-sm text-slate-400 hover:text-white transition-colors">
                   Contact

@@ -1,10 +1,10 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 type EventItem = {
   id: string;
@@ -22,17 +22,30 @@ type EventItem = {
 
 const events: EventItem[] = [
   {
-    id: "asake-2024",
-    title: "Melbourne Afrobeats Festival",
-    date: "Oct 20, 2024",
-    venue: "The Timber Yard",
+    id: "takeover-brothers-2024",
+    title: "Takeover Brothers — Australia Tour 2024",
+    date: "Nov 29 - Dec 7, 2024",
+    venue: "Melbourne · Sydney · Brisbane · Adelaide · Perth",
+    city: "National",
+    lineup: "DJ Kym NickDee · DJ Moh Spice",
+    note: "Five-city tour bringing the Takeover Brothers energy across Australia.",
+    tag: "Tour",
+    accent: "from-red-500 via-orange-500 to-yellow-400",
+    image: "/takeover-brothers.jpg",
+    details: "Multi-city DJ tour featuring DJ Kym NickDee and DJ Moh Spice, produced by What You See AU in partnership with Create Entertainment and MOB.",
+  },
+  {
+    id: "joe-mfalme-2024",
+    title: "DJ Joe Mfalme — Live in Melbourne",
+    date: "Jul 2, 2024",
+    venue: "TBA",
     city: "Melbourne",
-    lineup: "Asake · King Promise · BNXN (Buju) · Kenny2Play · Kily Safari · Mozatti · Miss Nancy · KZEE Bickame",
-    note: "Sold out • Called a historic night for the city.",
-    tag: "Festival",
-    accent: "from-orange-500 via-fuchsia-500 to-sky-400",
-    details:
-      "Flagship festival delivering a historic, sold-out night in Melbourne, uniting Afrobeats headliners with local DJs and hosts. Produced end-to-end by What You See AU.",
+    lineup: "DJ Joe Mfalme",
+    note: "Tickets on Eventbrite (link in bio). Unforgettable night of electrifying beats and non-stop fun.",
+    tag: "DJ Set",
+    accent: "from-cyan-400 via-blue-500 to-purple-500",
+    image: "/joe-mfalme.jpg",
+    details: "High-energy DJ set by DJ Joe Mfalme. Secure your tickets on Eventbrite and get ready to groove.",
   },
   {
     id: "bnxn-2024",
@@ -45,7 +58,7 @@ const events: EventItem[] = [
     tag: "Headliner",
     accent: "from-amber-400 via-orange-500 to-rose-500",
     image: "/bnxn.jpg",
-    details: "Full live set with live band support; BNXN’s first Melbourne festival headline under What You See AU.",
+    details: "Full live set with live band support; BNXN's first Melbourne festival headline under What You See AU.",
   },
   {
     id: "kingpromise-2024",
@@ -98,18 +111,157 @@ const events: EventItem[] = [
     image: "/nviiri.jpg",
     details: "Five-city debut tour across Australia with full routing, promotion, and on-ground show management by What You See AU.",
   },
-  {
-    id: "hypetown-2024",
-    title: "Hype Town Melbourne",
-    date: "Jun 2024",
-    venue: "52 Albert Rd",
-    city: "South Melbourne",
-    lineup: "Deklack · Sosa · Trece · Glow",
-    note: "High-energy club night spotlighting top local DJs.",
-    tag: "Club",
-    accent: "from-violet-500 via-indigo-500 to-cyan-400",
-  },
 ];
+
+function EventCard({ event, index, onClick }: { event: EventItem; index: number; onClick: () => void }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "end start"]
+  });
+  
+  // Parallax effects with smooth values
+  const y = useTransform(scrollYProgress, [0, 1], [80, -80]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.85, 1.05, 0.85]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [0, 1, 1, 1, 0]);
+  const rotate = useTransform(scrollYProgress, [0, 0.5, 1], [-3, 0, 3]);
+  
+  return (
+    <motion.article
+      ref={cardRef}
+      style={{ y, scale, opacity, rotate }}
+      className="sticky top-32"
+    >
+      <motion.div
+        whileHover={{ scale: 1.05, rotate: 0, transition: { duration: 0.3 } }}
+        className="group relative mx-auto max-w-4xl cursor-pointer"
+        onClick={onClick}
+      >
+        {/* Card Container */}
+        <div className="relative overflow-hidden rounded-3xl border-2 border-slate-800/60 bg-slate-900 shadow-2xl transition-all duration-500 hover:border-orange-500/50 hover:shadow-orange-500/20">
+          <div className="grid md:grid-cols-2 gap-0">
+            {/* Image Section */}
+            <div className="relative h-[400px] md:h-[500px] overflow-hidden bg-slate-900">
+              {event.image ? (
+                <motion.div
+                  className="relative w-full h-full"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <Image
+                    src={event.image}
+                    alt={event.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-contain"
+                    style={{ objectPosition: 'center center' }}
+                    quality={85}
+                    priority={index < 3}
+                    placeholder="blur"
+                    blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
+                    loading={index < 3 ? "eager" : "lazy"}
+                  />
+                </motion.div>
+              ) : (
+                <div className={`h-full w-full bg-gradient-to-br ${event.accent}`} />
+              )}
+              
+              {/* Floating Badge */}
+              <motion.div
+                className="absolute top-6 right-6"
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2, type: "spring" }}
+              >
+                <span className="rounded-full bg-slate-900/90 backdrop-blur-md border border-white/30 px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] text-white shadow-lg">
+                  {event.tag}
+                </span>
+              </motion.div>
+              
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60" />
+            </div>
+
+            {/* Content Section */}
+            <div className="relative p-8 md:p-10 flex flex-col justify-center bg-gradient-to-br from-slate-900 to-slate-950">
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 }}
+                className="space-y-5"
+              >
+                {/* Date */}
+                <div className="flex items-center gap-3">
+                  <div className="h-px flex-1 bg-gradient-to-r from-orange-500/50 to-transparent" />
+                  <p className="text-xs uppercase tracking-[0.3em] text-orange-400 font-bold">
+                    {event.date}
+                  </p>
+                  <div className="h-px flex-1 bg-gradient-to-l from-orange-500/50 to-transparent" />
+                </div>
+                
+                {/* Title */}
+                <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight group-hover:text-orange-100 transition-colors">
+                  {event.title}
+                </h2>
+                
+                {/* Location */}
+                <div className="flex items-center gap-3 text-slate-300">
+                  <motion.svg
+                    className="w-5 h-5 text-orange-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    whileHover={{ scale: 1.3, rotate: 10 }}
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </motion.svg>
+                  <span className="font-medium">{event.city}</span>
+                </div>
+                
+                {/* Lineup */}
+                <p className="text-slate-400 leading-relaxed">
+                  {event.lineup}
+                </p>
+                
+                {/* Note */}
+                <p className="text-sm text-slate-500 italic border-l-2 border-orange-500/30 pl-4">
+                  {event.note}
+                </p>
+                
+                {/* Details Button */}
+                {event.details && (
+                  <div className="pt-4">
+                    <motion.div
+                      whileHover={{ x: 5 }}
+                      className="inline-flex items-center gap-2 text-sm uppercase tracking-[0.2em] text-orange-400 hover:text-orange-300 font-bold transition-colors"
+                    >
+                      <span>Explore Details</span>
+                      <motion.svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        animate={{ x: [0, 5, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity }}
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </motion.svg>
+                    </motion.div>
+                  </div>
+                )}
+              </motion.div>
+            </div>
+          </div>
+          
+          {/* Decorative Corner */}
+          <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange-500/10 to-transparent rounded-bl-full" />
+          <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-fuchsia-500/10 to-transparent rounded-tr-full" />
+        </div>
+      </motion.div>
+    </motion.article>
+  );
+}
 
 export default function WorkPage() {
   const [expandedId, setExpandedId] = useState<string | null>(null);
@@ -131,7 +283,7 @@ export default function WorkPage() {
           >
             <div className="inline-flex items-center gap-2 rounded-full border border-fuchsia-500/30 bg-fuchsia-500/10 px-4 py-1.5 mb-6">
               <span className="text-xs font-medium uppercase tracking-[0.2em] text-fuchsia-300">
-                Work
+                Our Work
               </span>
             </div>
             <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
@@ -143,89 +295,75 @@ export default function WorkPage() {
           </motion.div>
         </div>
       </section>
-      {/* Timeline */}
-      <section className="border-t border-slate-800/60">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-          <div className="relative overflow-hidden">
-            {/* Ambient glows */}
-            <div className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-orange-500/12 blur-3xl" />
-            <div className="pointer-events-none absolute right-[-80px] bottom-10 h-80 w-80 rounded-full bg-fuchsia-500/12 blur-3xl" />
-
-            <div className="relative space-y-10">
-              {/* Rail */}
-              <div className="absolute inset-y-0 left-3 w-px bg-slate-800/60" aria-hidden />
-
-              {events.map((event, index) => (
-                <motion.article
-                  key={event.id}
-                  initial={{ opacity: 0, y: 28, scale: 0.97 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  whileHover={{ y: -6, scale: 1.01 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.45, delay: index * 0.05, ease: [0.25, 0.1, 0.25, 1] }}
-                  className="relative pl-10"
-                >
-                  {/* connector dot */}
-                  <div className="absolute left-0 top-10 h-3 w-3 rounded-full bg-gradient-to-r from-orange-500 to-fuchsia-500 shadow-[0_0_12px_rgba(249,115,22,0.55)]" aria-hidden />
-
-                  <div className="relative overflow-hidden rounded-3xl border border-slate-800/60 bg-slate-900/40 backdrop-blur-xl shadow-2xl">
-                    <div className="p-6 sm:p-7 flex flex-col gap-5 md:flex-row md:items-start">
-                      <div className="flex-1 space-y-3 order-2 md:order-1">
-                        <div className="flex flex-wrap items-center gap-3">
-                          <span className="text-xs uppercase tracking-[0.25em] text-orange-300">{event.date}</span>
-                          <span className="rounded-full border border-slate-700/70 bg-slate-800/60 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-slate-200">
-                            {event.tag}
-                          </span>
-                        </div>
-                        <h2 className="text-xl font-semibold text-white leading-snug">{event.title}</h2>
-                        <p className="text-sm text-slate-300">{event.venue} • {event.city}</p>
-                        <p className="text-sm text-slate-300">{event.lineup}</p>
-                        <p className="text-sm text-slate-500">{event.note}</p>
-
-                        {event.details && (
-                          <div className="pt-1 flex justify-start md:justify-end">
-                            <button
-                              onClick={() => setExpandedId(event.id)}
-                              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-orange-300 hover:text-orange-200 transition-colors"
-                            >
-                              Open details
-                              <span aria-hidden>↗</span>
-                            </button>
-                          </div>
-                        )}
-                      </div>
-
-                      <div className="relative w-full md:w-60 lg:w-72 h-48 md:h-56 overflow-hidden rounded-2xl border border-slate-800/60 bg-slate-900 shadow-lg order-1 md:order-2">
-                        {event.image ? (
-                          <Image
-                            src={event.image}
-                            alt={event.title}
-                            fill
-                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 40vw, 20rem"
-                            className="object-cover object-[50%_30%] transition-transform duration-500 group-hover:scale-105"
-                            priority={event.id === "bien-2024"}
-                          />
-                        ) : (
-                          <div
-                            className={`h-full w-full bg-gradient-to-br ${event.accent} opacity-90`}
-                            aria-hidden
-                          />
-                        )}
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
-                        <div className="absolute top-3 right-3 flex gap-2">
-                          <span className="rounded-full border border-slate-700/70 bg-slate-900/70 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-slate-100">
-                            {event.tag}
-                          </span>
-                        </div>
-                        <div className="absolute bottom-3 left-3 text-[10px] uppercase tracking-[0.25em] text-orange-200">
-                          {event.date}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </motion.article>
-              ))}
-            </div>
+      {/* Stacked Cards with Parallax */}
+      <section className="border-t border-slate-800/60 relative bg-slate-950 overflow-hidden">
+        {/* Animated Gradient Background Orbs */}
+        <motion.div
+          className="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full blur-3xl opacity-20"
+          animate={{
+            background: [
+              "radial-gradient(circle, rgba(249,115,22,0.3) 0%, rgba(168,85,247,0.2) 50%, transparent 100%)",
+              "radial-gradient(circle, rgba(168,85,247,0.3) 0%, rgba(14,165,233,0.2) 50%, transparent 100%)",
+              "radial-gradient(circle, rgba(14,165,233,0.3) 0%, rgba(34,197,94,0.2) 50%, transparent 100%)",
+              "radial-gradient(circle, rgba(34,197,94,0.3) 0%, rgba(249,115,22,0.2) 50%, transparent 100%)",
+            ],
+            scale: [1, 1.2, 1.1, 1],
+            x: [0, 100, -50, 0],
+            y: [0, -80, 60, 0],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full blur-3xl opacity-15"
+          animate={{
+            background: [
+              "radial-gradient(circle, rgba(14,165,233,0.3) 0%, rgba(249,115,22,0.2) 50%, transparent 100%)",
+              "radial-gradient(circle, rgba(34,197,94,0.3) 0%, rgba(168,85,247,0.2) 50%, transparent 100%)",
+              "radial-gradient(circle, rgba(168,85,247,0.3) 0%, rgba(14,165,233,0.2) 50%, transparent 100%)",
+              "radial-gradient(circle, rgba(249,115,22,0.3) 0%, rgba(34,197,94,0.2) 50%, transparent 100%)",
+            ],
+            scale: [1, 1.15, 1.05, 1],
+            x: [0, -80, 50, 0],
+            y: [0, 60, -40, 0],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute top-1/2 left-1/2 w-[400px] h-[400px] rounded-full blur-3xl opacity-10"
+          animate={{
+            background: [
+              "radial-gradient(circle, rgba(168,85,247,0.3) 0%, rgba(249,115,22,0.2) 50%, transparent 100%)",
+              "radial-gradient(circle, rgba(249,115,22,0.3) 0%, rgba(34,197,94,0.2) 50%, transparent 100%)",
+              "radial-gradient(circle, rgba(34,197,94,0.3) 0%, rgba(14,165,233,0.2) 50%, transparent 100%)",
+              "radial-gradient(circle, rgba(14,165,233,0.3) 0%, rgba(168,85,247,0.2) 50%, transparent 100%)",
+            ],
+            scale: [1, 1.3, 1.1, 1],
+            rotate: [0, 90, 180, 360],
+          }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <div className="mx-auto max-w-5xl px-4 py-32 sm:px-6 lg:px-8 relative z-10">
+          <div className="relative space-y-32">
+            {events.map((event, index) => (
+              <EventCard
+                key={event.id}
+                event={event}
+                index={index}
+                onClick={() => event.details && setExpandedId(event.id)}
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -263,20 +401,21 @@ export default function WorkPage() {
             {/* Backdrop with blur */}
             <motion.div
               key="backdrop"
-              className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-md"
+              className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-md cursor-pointer"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              onClick={() => setExpandedId(null)}
             />
             <motion.div
               key="modal"
-              className="fixed inset-0 z-50 flex items-center justify-center px-4"
-              initial={{ opacity: 0, y: 20, scale: 0.97 }}
+              className="fixed inset-0 z-50 flex items-center justify-center px-4 pointer-events-none"
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 20, scale: 0.97 }}
-              transition={{ duration: 0.25 }}
+              exit={{ opacity: 0, y: 30, scale: 0.95 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
             >
-              <div className="relative w-full max-w-2xl rounded-2xl border border-slate-800 bg-slate-950 shadow-2xl">
+              <div className="relative w-full max-w-2xl rounded-2xl border border-slate-800 bg-slate-950 shadow-2xl pointer-events-auto">
                 <div className="absolute inset-x-0 top-0 h-1.5 rounded-t-2xl bg-gradient-to-r from-orange-500 via-fuchsia-500 to-sky-400" />
                 <div className="p-6 sm:p-8 space-y-4">
                   <div className="flex items-start justify-between gap-4">
@@ -305,6 +444,9 @@ export default function WorkPage() {
                         fill
                         sizes="100vw"
                         className="object-cover object-[50%_30%]"
+                        quality={90}
+                        placeholder="blur"
+                        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
                       />
                     </div>
                   )}

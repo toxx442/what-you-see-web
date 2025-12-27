@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { InstagramFeed, InstagramSectionHeader } from "@/components/instagram-feed";
 import { placeholderPosts } from "@/lib/instagram";
+import { VideoHero } from "@/components/video-hero";
 
 const highlights = [
   {
@@ -39,10 +40,17 @@ const highlights = [
 
 const tours = [
   {
+    title: "Takeover Brothers — Australia Tour 2024",
+    date: "Nov 29 - Dec 7, 2024",
+    venue: "Melbourne · Sydney · Brisbane · Adelaide · Perth",
+    lineup: "DJ Kym NickDee · DJ Moh Spice",
+    note: "Five-city national tour bringing the Takeover Brothers energy across Australia.",
+  },
+  {
     title: "Melbourne Afrobeats Festival",
     date: "Oct 20, 2024",
     venue: "The Timber Yard, Melbourne",
-    lineup: "Asake, King Promise, BNXN (fka Buju) + more",
+    lineup: "Asake, King Promise, BNXN (fka Buju)",
     note: "Sold-out; described as a historic night for Melbourne.",
   },
   {
@@ -59,150 +67,14 @@ const tours = [
     lineup: "Nviiri the Storyteller",
     note: "Debut multi-city Australian tour.",
   },
-  {
-    title: "Hype Town Melbourne",
-    date: "Jun 2024",
-    venue: "52 Albert Rd, South Melbourne",
-    lineup: "Deklack, Sosa, Trece, Glow",
-    note: "High-energy club night spotlighting top DJs.",
-  },
 ];
 
 
 export default function HomePage() {
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        {/* Background gradient */}
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 left-1/4 h-[500px] w-[500px] rounded-full bg-orange-500/20 blur-[120px]" />
-          <div className="absolute bottom-0 right-1/4 h-[400px] w-[400px] rounded-full bg-fuchsia-500/20 blur-[100px]" />
-        </div>
-
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-36">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
-            {/* Hero content */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="space-y-8"
-            >
-              <div className="inline-flex items-center gap-2 rounded-full border border-orange-500/30 bg-orange-500/10 px-4 py-1.5">
-                <span className="h-2 w-2 rounded-full bg-orange-500 animate-pulse" />
-                <span className="text-xs font-medium uppercase tracking-[0.2em] text-orange-300">
-                  Australia • Entertainment • Visual
-                </span>
-              </div>
-
-              <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-                Australia’s home for immersive entertainment experiences.
-              </h1>
-
-              <p className="text-lg text-slate-300 max-w-xl leading-relaxed">
-                What You See AU curates sold-out festivals, tours, and club nights—bridging international talent with Australian audiences and crafting cultural moments that last.
-              </p>
-
-              <div className="flex flex-wrap items-center gap-4">
-                <Link href="/contact">
-                  <Button>Book an Experience</Button>
-                </Link>
-                <Link href="/work">
-                  <Button variant="ghost">View Tours & Events</Button>
-                </Link>
-              </div>
-
-              <p className="text-xs uppercase tracking-[0.2em] text-slate-500">
-                Melbourne-based • Entertainment • Live music • Culture
-              </p>
-            </motion.div>
-
-            {/* Hero visual card */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative"
-            >
-              <div className="absolute -inset-4 -z-10 rounded-3xl bg-gradient-to-tr from-orange-500/30 via-fuchsia-500/20 to-transparent blur-2xl" />
-              <div className="aspect-[4/5] overflow-hidden rounded-3xl border border-slate-800 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 shadow-2xl">
-                <div className="flex h-full flex-col justify-between p-6 sm:p-8">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-slate-300">
-                      What You See
-                    </span>
-                    <span className="rounded-full bg-slate-800 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-slate-400">
-                      Live Set • Visual
-                    </span>
-                  </div>
-
-                  {/* Visual: pulsating dim blur light */}
-                  <div className="flex-1 flex items-center justify-center my-6">
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
-                      animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                      transition={{ duration: 0.8, delay: 0.3 }}
-                      className="relative flex items-center justify-center"
-                    >
-                      {/* Soft background glow */}
-                      <motion.div
-                        className="absolute h-40 w-40 sm:h-52 sm:w-52 rounded-full bg-gradient-to-tr from-orange-500/20 via-fuchsia-500/15 to-transparent blur-3xl"
-                        animate={{
-                          scale: [1, 1.08, 1],
-                          opacity: [0.25, 0.45, 0.25],
-                        }}
-                        transition={{
-                          duration: 4,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                        }}
-                      />
-
-                      {/* Inner dim core */}
-                      <motion.div
-                        className="relative h-20 w-20 sm:h-24 sm:w-24 rounded-full bg-gradient-to-tr from-orange-400/25 via-fuchsia-400/25 to-slate-900/60 blur-md"
-                        animate={{
-                          scale: [1, 1.05, 1],
-                          opacity: [0.4, 0.6, 0.4],
-                        }}
-                        transition={{
-                          duration: 3,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                          delay: 0.3,
-                        }}
-                      />
-                    </motion.div>
-                  </div>
-
-                  <div className="space-y-3">
-                    <p className="text-xs uppercase tracking-[0.2em] text-slate-500">
-                      Highlight
-                    </p>
-                    <p className="text-xl font-semibold text-white leading-snug">
-                      A room lit like a thought you haven&apos;t had yet.
-                    </p>
-                    <p className="text-sm text-slate-400">
-                      Glimpses from recent nights, projections and immersive
-                      rooms — curated live on{" "}
-                      <a
-                        href="https://www.instagram.com/whatyouseeau/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-orange-400 hover:text-orange-300 underline underline-offset-4"
-                      >
-                        Instagram
-                      </a>
-                      .
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      {/* Video Hero Section */}
+      <VideoHero videoId="1e9nxh3vfa8" variant="fullscreen" />
 
       {/* Company Snapshot Section */}
       <section className="border-t border-slate-800/60 bg-slate-900/40">
@@ -285,15 +157,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Tours & Festivals Section */}
-      <section className="border-t border-slate-800/60 bg-slate-900/40">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+      {/* Tours & Festivals Section - Carousel */}
+      <section className="border-t border-slate-800/60 bg-slate-900/40 overflow-hidden">
+        <div className="mx-auto max-w-full px-4 py-16 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="mb-10 text-center"
+            className="mb-10 text-center max-w-6xl mx-auto"
           >
             <p className="text-xs uppercase tracking-[0.25em] text-orange-300">Flagship Shows</p>
             <h3 className="text-3xl font-bold text-white sm:text-4xl">Recent Tours & Festivals</h3>
@@ -302,27 +174,75 @@ export default function HomePage() {
             </p>
           </motion.div>
 
-          <div className="grid gap-6 sm:grid-cols-2">
-            {tours.map((tour, idx) => (
-              <motion.div
-                key={tour.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: idx * 0.05 }}
-                className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 shadow-sm hover:border-orange-500/50 hover:shadow-orange-500/10 transition-colors"
-              >
-                <div className="flex items-start justify-between gap-2">
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.25em] text-orange-300">{tour.date}</p>
-                    <h4 className="mt-2 text-xl font-semibold text-white">{tour.title}</h4>
-                    <p className="text-sm text-slate-300 mt-1">{tour.venue}</p>
+          {/* Horizontal Scrolling Carousel */}
+          <div className="relative">
+            <div className="flex gap-6 overflow-x-auto pb-8 px-4 sm:px-6 lg:px-8 snap-x snap-mandatory scroll-smooth scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+              {tours.map((tour, idx) => (
+                <motion.div
+                  key={tour.title}
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  className="group flex-shrink-0 w-[320px] sm:w-[380px] snap-center"
+                >
+                  <div className="relative h-full rounded-2xl border border-slate-800 bg-slate-900/60 p-6 shadow-lg transition-all duration-300 hover:border-orange-500/50 hover:shadow-orange-500/20 hover:scale-[1.02] hover:-translate-y-2">
+                    {/* Decorative gradient corner */}
+                    <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-orange-500/10 to-transparent rounded-bl-full" />
+                    
+                    {/* Content */}
+                    <div className="relative space-y-4">
+                      {/* Date badge */}
+                      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20">
+                        <svg className="w-3.5 h-3.5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <p className="text-xs uppercase tracking-[0.25em] text-orange-300 font-medium">{tour.date}</p>
+                      </div>
+                      
+                      {/* Title */}
+                      <h4 className="text-xl font-bold text-white leading-tight group-hover:text-orange-100 transition-colors">
+                        {tour.title}
+                      </h4>
+                      
+                      {/* Venue */}
+                      <div className="flex items-start gap-2 text-slate-300">
+                        <svg className="w-4 h-4 text-orange-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        <p className="text-sm">{tour.venue}</p>
+                      </div>
+                      
+                      {/* Lineup */}
+                      <div className="pt-2 border-t border-slate-800">
+                        <p className="text-sm text-slate-400 leading-relaxed">{tour.lineup}</p>
+                      </div>
+                      
+                      {/* Note */}
+                      <p className="text-xs text-slate-500 italic">{tour.note}</p>
+                      
+                      {/* Hover indicator */}
+                      <div className="pt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-orange-400 font-semibold">
+                          <span>View Details</span>
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <p className="mt-3 text-sm text-slate-400">{tour.lineup}</p>
-                <p className="mt-2 text-sm text-slate-500">{tour.note}</p>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
+            </div>
+            
+            {/* Scroll hint */}
+            <div className="mt-4 text-center">
+              <p className="text-xs uppercase tracking-[0.2em] text-slate-500">
+                ← Swipe to explore more →
+              </p>
+            </div>
           </div>
         </div>
       </section>
