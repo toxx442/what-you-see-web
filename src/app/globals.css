@@ -1,8 +1,33 @@
 @import "tailwindcss";
 
+/* Dark mode (default) */
+:root.dark {
+  --background: #020617;
+  --foreground: #f1f5f9;
+  --accent: #f97316;
+  --accent-secondary: #a855f7;
+  --border: rgba(51, 65, 85, 0.4);
+  --card-bg: rgba(15, 23, 42, 0.6);
+}
+
+/* Light mode */
+:root.light {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --accent: #ea580c;
+  --accent-secondary: #9333ea;
+  --border: rgba(203, 213, 225, 0.8);
+  --card-bg: rgba(248, 250, 252, 0.9);
+}
+
+/* Default to dark mode if no class */
 :root {
   --background: #020617;
   --foreground: #f1f5f9;
+  --accent: #f97316;
+  --accent-secondary: #a855f7;
+  --border: rgba(51, 65, 85, 0.4);
+  --card-bg: rgba(15, 23, 42, 0.6);
 }
 
 @theme inline {
@@ -29,23 +54,47 @@ body {
   color: white;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
+.light ::selection {
+  background-color: rgba(234, 88, 12, 0.3);
+  color: #0f172a;
+}
+
+/* Custom scrollbar - Dark mode */
+.dark ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
-::-webkit-scrollbar-track {
+.dark ::-webkit-scrollbar-track {
   background: #0f172a;
 }
 
-::-webkit-scrollbar-thumb {
+.dark ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #f97316, #a855f7);
   border-radius: 4px;
 }
 
-::-webkit-scrollbar-thumb:hover {
+.dark ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, #fb923c, #c084fc);
+}
+
+/* Custom scrollbar - Light mode */
+.light ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.light ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ea580c, #9333ea);
+  border-radius: 4px;
+}
+
+.light ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #f97316, #a855f7);
 }
 
 /* Eye logo blink animation */
