@@ -2,14 +2,14 @@ import Link from "next/link";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-slate-200 dark:border-slate-800/60 bg-slate-50 dark:bg-slate-950">
+    <footer className="border-t border-slate-200/60 dark:border-slate-800/60 bg-gradient-to-b from-white to-neutral-50 dark:bg-slate-950">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="relative h-8 w-8 rounded-full bg-gradient-to-tr from-orange-500 to-fuchsia-500">
-                <div className="absolute inset-1 rounded-full bg-slate-50 dark:bg-slate-950" />
+              <div className="relative h-8 w-8 rounded-full bg-gradient-to-tr from-orange-500 to-fuchsia-500 shadow-md">
+                <div className="absolute inset-1 rounded-full bg-white dark:bg-slate-950" />
                 <div className="absolute inset-1.5 rounded-full bg-gradient-to-tr from-orange-500 to-fuchsia-500" />
               </div>
               <span className="text-sm font-bold tracking-[0.2em] uppercase text-slate-900 dark:text-white">
@@ -77,7 +77,7 @@ export function SiteFooter() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-8 border-t border-slate-200 dark:border-slate-800/60 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 pt-8 border-t border-slate-200/60 dark:border-slate-800/60 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-slate-500 dark:text-slate-500">
             © {new Date().getFullYear()} What You See. All rights reserved.
           </p>

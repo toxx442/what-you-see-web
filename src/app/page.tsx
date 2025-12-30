@@ -77,7 +77,7 @@ export default function HomePage() {
       <VideoHero videoId="1e9nxh3vfa8" variant="fullscreen" />
 
       {/* Company Snapshot Section */}
-      <section className="border-t border-slate-200 dark:border-slate-800/60 bg-slate-50 dark:bg-slate-900/40">
+      <section className="border-t border-slate-200/60 dark:border-slate-800/60 bg-gradient-to-br from-orange-50/30 via-white to-purple-50/30 dark:bg-slate-900/40">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -87,11 +87,11 @@ export default function HomePage() {
             className="grid gap-8 lg:grid-cols-3 lg:items-start"
           >
             <div className="space-y-4 lg:col-span-1">
-              <p className="text-xs uppercase tracking-[0.25em] text-orange-600 dark:text-orange-300">Company Profile</p>
-              <h2 className="text-3xl font-bold text-slate-900 dark:text-white">
+              <p className="text-xs uppercase tracking-[0.25em] text-orange-600 dark:text-orange-300 font-semibold">Company Profile</p>
+              <h2 className="text-3xl font-bold bg-gradient-to-br from-slate-900 to-slate-700 dark:from-white dark:to-slate-200 bg-clip-text text-transparent">
                 What You See AU — premier cultural curator for live entertainment in Australia.
               </h2>
-              <p className="text-slate-600 dark:text-slate-400">
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                 We produce high-energy concerts, festivals, and club nights; manage artist tours; and build communities around African and diaspora sounds.
               </p>
             </div>
@@ -104,7 +104,7 @@ export default function HomePage() {
               ].map((item) => (
                 <div
                   key={item}
-                  className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 px-4 py-5 text-slate-700 dark:text-slate-200 shadow-sm"
+                  className="rounded-2xl border border-slate-200/60 dark:border-slate-800 bg-white dark:bg-slate-900/60 px-4 py-5 text-slate-700 dark:text-slate-200 shadow-sm hover:shadow-md hover:border-orange-300 dark:hover:border-slate-700 transition-all duration-300"
                 >
                   {item}
                 </div>
@@ -115,7 +115,7 @@ export default function HomePage() {
       </section>
 
       {/* Highlights Section */}
-      <section className="border-t border-slate-200 dark:border-slate-800/60 bg-white dark:bg-slate-900/30">
+      <section className="border-t border-slate-200/60 dark:border-slate-800/60 bg-gradient-to-b from-white via-neutral-50/50 to-white dark:bg-slate-900/30">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -124,10 +124,10 @@ export default function HomePage() {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 dark:from-white dark:via-slate-100 dark:to-white bg-clip-text text-transparent sm:text-4xl">
               What We Do
             </h2>
-            <p className="mt-4 text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            <p className="mt-4 text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-lg">
               Creating unforgettable moments through light, sound, and space.
             </p>
           </motion.div>
@@ -140,9 +140,10 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 p-6 transition-all duration-300 hover:border-orange-500/50 hover:bg-slate-100 dark:hover:bg-slate-900/80 hover:shadow-lg hover:shadow-orange-500/10"
+                className="group relative rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900/50 p-6 transition-all duration-300 hover:border-orange-400/60 hover:bg-gradient-to-br hover:from-orange-50/50 hover:to-purple-50/50 dark:hover:bg-slate-900/80 hover:shadow-xl hover:shadow-orange-500/10 hover:-translate-y-1"
               >
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500/20 to-fuchsia-500/20 text-orange-600 dark:text-orange-400 group-hover:from-orange-500/30 group-hover:to-fuchsia-500/30 transition-colors">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-orange-500/5 to-purple-500/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="relative mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500/10 to-fuchsia-500/10 text-orange-600 dark:text-orange-400 group-hover:from-orange-500/20 group-hover:to-fuchsia-500/20 group-hover:scale-110 transition-all duration-300 shadow-sm">
                   {item.icon}
                 </div>
                 <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">
@@ -158,7 +159,7 @@ export default function HomePage() {
       </section>
 
       {/* Tours & Festivals Section - Carousel */}
-      <section className="border-t border-slate-200 dark:border-slate-800/60 bg-slate-50 dark:bg-slate-900/40 overflow-hidden">
+      <section className="border-t border-slate-200/60 dark:border-slate-800/60 bg-gradient-to-br from-purple-50/30 via-neutral-50 to-orange-50/30 dark:bg-slate-900/40 overflow-hidden">
         <div className="mx-auto max-w-full px-4 py-16 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -167,8 +168,8 @@ export default function HomePage() {
             transition={{ duration: 0.5 }}
             className="mb-10 text-center max-w-6xl mx-auto"
           >
-            <p className="text-xs uppercase tracking-[0.25em] text-orange-600 dark:text-orange-300">Flagship Shows</p>
-            <h3 className="text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">Recent Tours & Festivals</h3>
+            <p className="text-xs uppercase tracking-[0.25em] text-orange-600 dark:text-orange-300 font-semibold">Flagship Shows</p>
+            <h3 className="text-3xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-200 bg-clip-text text-transparent sm:text-4xl">Recent Tours & Festivals</h3>
             <p className="mt-3 text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
               Historic, sold-out, and community-building nights that connect international talent with Australian fans.
             </p>
@@ -186,9 +187,9 @@ export default function HomePage() {
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
                   className="group flex-shrink-0 w-[320px] sm:w-[380px] snap-center"
                 >
-                  <div className="relative h-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-6 shadow-lg transition-all duration-300 hover:border-orange-500/50 hover:shadow-orange-500/20 hover:scale-[1.02] hover:-translate-y-2">
+                  <div className="relative h-full rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-6 shadow-lg transition-all duration-300 hover:border-orange-400/60 hover:shadow-2xl hover:shadow-orange-500/20 hover:scale-[1.03] hover:-translate-y-2 backdrop-blur-sm">
                     {/* Decorative gradient corner */}
-                    <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-orange-500/10 to-transparent rounded-bl-full" />
+                    <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-orange-500/10 via-purple-500/5 to-transparent rounded-bl-full" />
                     
                     {/* Content */}
                     <div className="relative space-y-4">
@@ -248,7 +249,7 @@ export default function HomePage() {
       </section>
 
       {/* Instagram Feed Section */}
-      <section className="border-t border-slate-200 dark:border-slate-800/60 bg-white dark:bg-slate-950">
+      <section className="border-t border-slate-200/60 dark:border-slate-800/60 bg-white dark:bg-slate-950">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
           <InstagramSectionHeader />
           <InstagramFeed posts={placeholderPosts.slice(0, 9)} variant="masonry" />
@@ -256,8 +257,10 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="border-t border-slate-200 dark:border-slate-800/60 bg-gradient-to-b from-slate-100 to-slate-50 dark:from-slate-900/50 dark:to-slate-950">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
+      <section className="border-t border-slate-200/60 dark:border-slate-800/60 bg-gradient-to-br from-orange-50/50 via-white to-purple-50/50 dark:from-slate-900/50 dark:to-slate-950 relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-orange-100/20 via-transparent to-purple-100/20 dark:from-orange-900/10 dark:to-purple-900/10" />
+        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8 relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -265,10 +268,10 @@ export default function HomePage() {
             transition={{ duration: 0.5 }}
             className="text-center"
           >
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-slate-900 via-orange-800 to-slate-900 dark:from-white dark:via-orange-100 dark:to-white bg-clip-text text-transparent sm:text-4xl">
               Ready to create something unforgettable?
             </h2>
-            <p className="mt-4 text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
+            <p className="mt-4 text-slate-600 dark:text-slate-400 max-w-xl mx-auto text-lg">
               Whether it&apos;s a show, an installation, or a collaboration —
               let&apos;s make it happen.
             </p>

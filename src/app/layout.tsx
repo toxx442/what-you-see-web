@@ -56,7 +56,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#020617" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased transition-colors duration-300`}
+        className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-neutral-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased transition-colors duration-300`}
       >
         <ThemeProvider>
           <div className="flex min-h-screen flex-col">

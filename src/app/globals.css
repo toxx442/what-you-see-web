@@ -10,14 +10,16 @@
   --card-bg: rgba(15, 23, 42, 0.6);
 }
 
-/* Light mode */
+/* Light mode - Modern redesign */
 :root.light {
-  --background: #ffffff;
-  --foreground: #0f172a;
-  --accent: #ea580c;
-  --accent-secondary: #9333ea;
-  --border: rgba(203, 213, 225, 0.8);
-  --card-bg: rgba(248, 250, 252, 0.9);
+  --background: #fafafa;
+  --foreground: #1e293b;
+  --accent: #f97316;
+  --accent-secondary: #a855f7;
+  --border: rgba(226, 232, 240, 0.8);
+  --card-bg: #ffffff;
+  --surface: #f8fafc;
+  --surface-hover: #f1f5f9;
 }
 
 /* Default to dark mode if no class */
