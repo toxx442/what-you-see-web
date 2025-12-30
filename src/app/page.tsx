@@ -77,7 +77,7 @@ export default function HomePage() {
       <VideoHero videoId="1e9nxh3vfa8" variant="fullscreen" />
 
       {/* Company Snapshot Section */}
-      <section className="border-t border-slate-800/60 bg-slate-900/40">
+      <section className="border-t border-slate-200 dark:border-slate-800/60 bg-slate-50 dark:bg-slate-900/40">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -87,11 +87,11 @@ export default function HomePage() {
             className="grid gap-8 lg:grid-cols-3 lg:items-start"
           >
             <div className="space-y-4 lg:col-span-1">
-              <p className="text-xs uppercase tracking-[0.25em] text-orange-300">Company Profile</p>
-              <h2 className="text-3xl font-bold text-white">
+              <p className="text-xs uppercase tracking-[0.25em] text-orange-600 dark:text-orange-300">Company Profile</p>
+              <h2 className="text-3xl font-bold text-slate-900 dark:text-white">
                 What You See AU — premier cultural curator for live entertainment in Australia.
               </h2>
-              <p className="text-slate-400">
+              <p className="text-slate-600 dark:text-slate-400">
                 We produce high-energy concerts, festivals, and club nights; manage artist tours; and build communities around African and diaspora sounds.
               </p>
             </div>
@@ -104,7 +104,7 @@ export default function HomePage() {
               ].map((item) => (
                 <div
                   key={item}
-                  className="rounded-2xl border border-slate-800 bg-slate-900/60 px-4 py-5 text-slate-200 shadow-sm"
+                  className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 px-4 py-5 text-slate-700 dark:text-slate-200 shadow-sm"
                 >
                   {item}
                 </div>
@@ -115,7 +115,7 @@ export default function HomePage() {
       </section>
 
       {/* Highlights Section */}
-      <section className="border-t border-slate-800/60 bg-slate-900/30">
+      <section className="border-t border-slate-200 dark:border-slate-800/60 bg-white dark:bg-slate-900/30">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -124,10 +124,10 @@ export default function HomePage() {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-white sm:text-4xl">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">
               What We Do
             </h2>
-            <p className="mt-4 text-slate-400 max-w-2xl mx-auto">
+            <p className="mt-4 text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
               Creating unforgettable moments through light, sound, and space.
             </p>
           </motion.div>
@@ -140,15 +140,15 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group rounded-2xl border border-slate-800 bg-slate-900/50 p-6 transition-all duration-300 hover:border-orange-500/50 hover:bg-slate-900/80 hover:shadow-lg hover:shadow-orange-500/10"
+                className="group rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 p-6 transition-all duration-300 hover:border-orange-500/50 hover:bg-slate-100 dark:hover:bg-slate-900/80 hover:shadow-lg hover:shadow-orange-500/10"
               >
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500/20 to-fuchsia-500/20 text-orange-400 group-hover:from-orange-500/30 group-hover:to-fuchsia-500/30 transition-colors">
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500/20 to-fuchsia-500/20 text-orange-600 dark:text-orange-400 group-hover:from-orange-500/30 group-hover:to-fuchsia-500/30 transition-colors">
                   {item.icon}
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">
+                <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">
                   {item.title}
                 </h3>
-                <p className="text-sm text-slate-400 leading-relaxed">
+                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
                   {item.description}
                 </p>
               </motion.div>
@@ -158,7 +158,7 @@ export default function HomePage() {
       </section>
 
       {/* Tours & Festivals Section - Carousel */}
-      <section className="border-t border-slate-800/60 bg-slate-900/40 overflow-hidden">
+      <section className="border-t border-slate-200 dark:border-slate-800/60 bg-slate-50 dark:bg-slate-900/40 overflow-hidden">
         <div className="mx-auto max-w-full px-4 py-16 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -167,9 +167,9 @@ export default function HomePage() {
             transition={{ duration: 0.5 }}
             className="mb-10 text-center max-w-6xl mx-auto"
           >
-            <p className="text-xs uppercase tracking-[0.25em] text-orange-300">Flagship Shows</p>
-            <h3 className="text-3xl font-bold text-white sm:text-4xl">Recent Tours & Festivals</h3>
-            <p className="mt-3 text-slate-400 max-w-2xl mx-auto">
+            <p className="text-xs uppercase tracking-[0.25em] text-orange-600 dark:text-orange-300">Flagship Shows</p>
+            <h3 className="text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">Recent Tours & Festivals</h3>
+            <p className="mt-3 text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
               Historic, sold-out, and community-building nights that connect international talent with Australian fans.
             </p>
           </motion.div>
@@ -186,7 +186,7 @@ export default function HomePage() {
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
                   className="group flex-shrink-0 w-[320px] sm:w-[380px] snap-center"
                 >
-                  <div className="relative h-full rounded-2xl border border-slate-800 bg-slate-900/60 p-6 shadow-lg transition-all duration-300 hover:border-orange-500/50 hover:shadow-orange-500/20 hover:scale-[1.02] hover:-translate-y-2">
+                  <div className="relative h-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-6 shadow-lg transition-all duration-300 hover:border-orange-500/50 hover:shadow-orange-500/20 hover:scale-[1.02] hover:-translate-y-2">
                     {/* Decorative gradient corner */}
                     <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-orange-500/10 to-transparent rounded-bl-full" />
                     
@@ -194,20 +194,20 @@ export default function HomePage() {
                     <div className="relative space-y-4">
                       {/* Date badge */}
                       <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20">
-                        <svg className="w-3.5 h-3.5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-3.5 h-3.5 text-orange-600 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
-                        <p className="text-xs uppercase tracking-[0.25em] text-orange-300 font-medium">{tour.date}</p>
+                        <p className="text-xs uppercase tracking-[0.25em] text-orange-600 dark:text-orange-300 font-medium">{tour.date}</p>
                       </div>
                       
                       {/* Title */}
-                      <h4 className="text-xl font-bold text-white leading-tight group-hover:text-orange-100 transition-colors">
+                      <h4 className="text-xl font-bold text-slate-900 dark:text-white leading-tight group-hover:text-orange-600 dark:group-hover:text-orange-100 transition-colors">
                         {tour.title}
                       </h4>
                       
                       {/* Venue */}
-                      <div className="flex items-start gap-2 text-slate-300">
-                        <svg className="w-4 h-4 text-orange-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <div className="flex items-start gap-2 text-slate-700 dark:text-slate-300">
+                        <svg className="w-4 h-4 text-orange-600 dark:text-orange-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
@@ -215,16 +215,16 @@ export default function HomePage() {
                       </div>
                       
                       {/* Lineup */}
-                      <div className="pt-2 border-t border-slate-800">
-                        <p className="text-sm text-slate-400 leading-relaxed">{tour.lineup}</p>
+                      <div className="pt-2 border-t border-slate-200 dark:border-slate-800">
+                        <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{tour.lineup}</p>
                       </div>
                       
                       {/* Note */}
-                      <p className="text-xs text-slate-500 italic">{tour.note}</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-500 italic">{tour.note}</p>
                       
                       {/* Hover indicator */}
                       <div className="pt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-orange-400 font-semibold">
+                        <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-orange-600 dark:text-orange-400 font-semibold">
                           <span>View Details</span>
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -239,7 +239,7 @@ export default function HomePage() {
             
             {/* Scroll hint */}
             <div className="mt-4 text-center">
-              <p className="text-xs uppercase tracking-[0.2em] text-slate-500">
+              <p className="text-xs uppercase tracking-[0.2em] text-slate-500 dark:text-slate-500">
                 ← Swipe to explore more →
               </p>
             </div>
@@ -248,7 +248,7 @@ export default function HomePage() {
       </section>
 
       {/* Instagram Feed Section */}
-      <section className="border-t border-slate-800/60">
+      <section className="border-t border-slate-200 dark:border-slate-800/60 bg-white dark:bg-slate-950">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
           <InstagramSectionHeader />
           <InstagramFeed posts={placeholderPosts.slice(0, 9)} variant="masonry" />
@@ -256,7 +256,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="border-t border-slate-800/60 bg-gradient-to-b from-slate-900/50 to-slate-950">
+      <section className="border-t border-slate-200 dark:border-slate-800/60 bg-gradient-to-b from-slate-100 to-slate-50 dark:from-slate-900/50 dark:to-slate-950">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -265,10 +265,10 @@ export default function HomePage() {
             transition={{ duration: 0.5 }}
             className="text-center"
           >
-            <h2 className="text-3xl font-bold text-white sm:text-4xl">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">
               Ready to create something unforgettable?
             </h2>
-            <p className="mt-4 text-slate-400 max-w-xl mx-auto">
+            <p className="mt-4 text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
               Whether it&apos;s a show, an installation, or a collaboration —
               let&apos;s make it happen.
             </p>
