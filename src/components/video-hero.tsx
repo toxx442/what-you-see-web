@@ -141,6 +141,9 @@ export function VideoHero({ videoId, variant = "overlay" }: VideoHeroProps) {
             modestbranding: 1,
             playsinline: 1,
             enablejsapi: 1,
+            fs: 0,
+            iv_load_policy: 3,
+            disablekb: 1,
           },
           events: {
             onReady: onPlayerReady,
@@ -219,12 +222,23 @@ export function VideoHero({ videoId, variant = "overlay" }: VideoHeroProps) {
               >
                 <div
                   id="youtube-player-fullscreen"
+                  className="relative overflow-hidden"
                   style={{
                     width: "100%",
                     height: "100%",
                     pointerEvents: "none",
                   }}
-                />
+                >
+                  <style jsx>{`
+                    #youtube-player-fullscreen :global(iframe) {
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      width: 100%;
+                      height: 100%;
+                    }
+                  `}</style>
+                </div>
               </motion.div>
             </div>
           </motion.div>
@@ -370,7 +384,7 @@ export function VideoHero({ videoId, variant = "overlay" }: VideoHeroProps) {
               <div className="absolute -inset-4 -z-10 rounded-3xl bg-gradient-to-tr from-orange-500/30 via-fuchsia-500/20 to-transparent blur-2xl" />
               <div className="aspect-[16/9] overflow-hidden rounded-3xl border border-slate-800 bg-slate-900 shadow-2xl">
                 <iframe
-                  src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=1&modestbranding=1&playsinline=1&enablejsapi=1`}
+                  src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&modestbranding=1&playsinline=1&enablejsapi=1&fs=0&iv_load_policy=3&disablekb=1&rel=0`}
                   className="w-full h-full"
                   allow="autoplay; encrypted-media"
                   allowFullScreen
@@ -442,12 +456,23 @@ export function VideoHero({ videoId, variant = "overlay" }: VideoHeroProps) {
             >
               <div
                 id="youtube-player-overlay"
+                className="relative overflow-hidden"
                 style={{
                   width: "100%",
                   height: "100%",
                   pointerEvents: "none",
                 }}
-              />
+              >
+                <style jsx>{`
+                  #youtube-player-overlay :global(iframe) {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                  }
+                `}</style>
+              </div>
             </motion.div>
           </div>
         </motion.div>
